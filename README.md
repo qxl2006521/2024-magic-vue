@@ -16,6 +16,7 @@ npm run dev
 ![5](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/5.png)
 ![7](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/7.png)
 ![9](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/9.png)
+![11](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/11.png)
 ![12](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/12.png)
 ## IDE
 
