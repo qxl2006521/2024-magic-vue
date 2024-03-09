@@ -10,7 +10,13 @@
 npm install
 npm run dev
 ```
-
+## 程序截图
+![1](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/1.png)
+![3](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/3.png)
+![5](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/5.png)
+![7](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/7.png)
+![9](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/9.png)
+![12](https://raw.githubusercontent.com/qxl2006521/2024-magic-vue/main/screenshot/12.png)
 ## IDE
 
 [VSCode](https://code.visualstudio.com/)
