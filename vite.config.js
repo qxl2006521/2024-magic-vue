@@ -7,6 +7,11 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // 为了生成github静态站点,需要使用子文件夹
+  // base: '/2024-magic-vue/',
+  // build: {  
+  //   outDir: 'docs', // 设置输出目录为 'docs'  
+  // },
   plugins: [
     vue(),
     AutoImport({
