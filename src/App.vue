@@ -14,10 +14,9 @@ const renderCards = computed(() => {
   const result = []
   // 图片宽度250
   const row1Count = realCards.value.row1.length
-  const gaptotal = containerWidth.value - 20 - row1Count * 250 
+  const gaptotal = containerWidth.value - 20 - row1Count * 250
   let gap = 0
-  if( row1Count>1 )
-    gap = gaptotal / (row1Count - 1)
+  if (row1Count > 1) gap = gaptotal / (row1Count - 1)
   for (let i = 0; i < row1Count; i++) {
     result.push({
       ...realCards.value.row1[i],
@@ -29,7 +28,7 @@ const renderCards = computed(() => {
   for (let i = 0; i < realCards.value.row2.length; i++) {
     result.push({
       ...realCards.value.row2[i],
-      left:i * 250 + 10 + gap * i,
+      left: i * 250 + 10 + gap * i,
       top: 182 + realCards.value.hasGap * 80,
       zIndex: i
     })
@@ -102,7 +101,7 @@ const getAssetsFile = (url) => {
   return new URL(`./assets/${url}`, import.meta.url).href
 }
 // 监听元素尺寸,调整界面
-const el = ref(null);
+const el = ref(null)
 useResizeObserver(el, (entries) => {
   const entry = entries[0]
   const { width } = entry.contentRect
@@ -114,7 +113,7 @@ useResizeObserver(el, (entries) => {
   <div class="header">
     <div>
       <el-button @click="preStep()" type="primary" :icon="ArrowLeft">上一步</el-button>
-       <text class="stepText">{{ curStepIndex + 1 }} / {{ steps.length }}</text>
+      <text class="stepText">{{ curStepIndex + 1 }} / {{ steps.length }}</text>
       <el-button @click="nextStep()" type="primary"
         >下一步<el-icon class="el-icon--right"><ArrowRight /></el-icon
       ></el-button>
@@ -159,10 +158,10 @@ useResizeObserver(el, (entries) => {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
-  margin-top:15px;
+  margin-top: 15px;
 }
 .stepText {
-  margin:5px 20px;
+  margin: 5px 20px;
   font-size: 20px;
 }
 .container {

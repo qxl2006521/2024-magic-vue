@@ -1,35 +1,18 @@
 # 2024-magic-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+在抖音看到渡一老师讲了2024春晚刘谦魔术的前端实现.由于没找到他的源码,就按照他的思路自己实现了一个.用的vue3,没用ts.
 
-## Recommended IDE Setup
+## 原教程
+[渡一教程](https://www.douyin.com/video/7339410981212163363).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+## 运行方法
+ ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## IDE
 
-```sh
-npm run build
-```
+[VSCode](https://code.visualstudio.com/)
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```

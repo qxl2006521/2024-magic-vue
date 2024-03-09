@@ -274,8 +274,8 @@ export class Step120 extends StepBase {
     cards.title = '完美!!!'
     // bugfix, 最后的时候有可能下半部分在第一行,上半部分在第二行
     if (cards.row1[0].part == 'down') {
-        // 需要换顺序
-        [ cards.row1, cards.row2 ] = [ cards.row2, cards.row1 ]
+      // 需要换顺序
+      ;[cards.row1, cards.row2] = [cards.row2, cards.row1]
     }
     return cards
   }
