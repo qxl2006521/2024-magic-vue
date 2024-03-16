@@ -16,11 +16,17 @@ const renderCards = computed(() => {
   const row1Count = realCards.value.row1.length
   const gaptotal = containerWidth.value - 20 - row1Count * 250
   let gap = 0
-  if (row1Count > 1) gap = gaptotal / (row1Count - 1)
+  if (gaptotal > 0) {
+    gap = gaptotal / (row1Count + 1)
+  } else {
+    if (row1Count > 1) {
+      gap = gaptotal / (row1Count - 1)
+    }
+  }
   for (let i = 0; i < row1Count; i++) {
     result.push({
       ...realCards.value.row1[i],
-      left: i * 250 + 10 + gap * i,
+      left: i * 250 + 10 + gap * (gap > 0 ? i + 1 : i),
       top: 0,
       zIndex: i
     })
@@ -28,7 +34,7 @@ const renderCards = computed(() => {
   for (let i = 0; i < realCards.value.row2.length; i++) {
     result.push({
       ...realCards.value.row2[i],
-      left: i * 250 + 10 + gap * i,
+      left: i * 250 + 10 + gap * (gap > 0 ? i + 1 : i),
       top: 182 + realCards.value.hasGap * 80,
       zIndex: i
     })
@@ -59,6 +65,7 @@ onMounted(() => {
 const dialogShow = ref(false)
 const curStepIndex = ref(0)
 const btnOptions = shallowRef({ title: '', btns: [] })
+const nextBtnDisabled = ref(false)
 
 const _runNextStep = () => {
   const result = steps[curStepIndex.value].play(realCards.value)
@@ -69,18 +76,23 @@ const _runNextStep = () => {
       i++
       if (i == result.length) {
         clearInterval(timeid)
+        nextBtnDisabled.value = false
       }
     }, 500)
   } else {
     realCards.value = result
+    nextBtnDisabled.value = false
   }
 }
 const preStep = () => {
+  nextBtnDisabled.value = false
   if (curStepIndex.value <= 0) return
   curStepIndex.value = curStepIndex.value - 1
   realCards.value = steps[curStepIndex.value].getLastResult()
 }
+
 const nextStep = () => {
+  nextBtnDisabled.value = true
   if (curStepIndex.value == steps.length - 1) return
   curStepIndex.value = curStepIndex.value + 1
   btnOptions.value = steps[curStepIndex.value].getSetting()
@@ -114,9 +126,9 @@ useResizeObserver(el, (entries) => {
     <div>
       <el-button @click="preStep()" type="primary" :icon="ArrowLeft">上一步</el-button>
       <text class="stepText">{{ curStepIndex + 1 }} / {{ steps.length }}</text>
-      <el-button @click="nextStep()" type="primary"
-        >下一步<el-icon class="el-icon--right"><ArrowRight /></el-icon
-      ></el-button>
+      <el-button @click="nextStep()" type="primary" :disabled="nextBtnDisabled">
+        下一步<el-icon class="el-icon--right"><ArrowRight /></el-icon>
+      </el-button>
     </div>
     <div class="title">
       {{ realCards.title }}
@@ -136,7 +148,14 @@ useResizeObserver(el, (entries) => {
       }"
     ></div>
   </TransitionGroup>
-  <el-dialog v-model="dialogShow" :title="btnOptions.title" width="600">
+  <el-dialog
+    v-model="dialogShow"
+    :title="btnOptions.title"
+    width="600"
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
+    draggable
+  >
     <el-button v-for="btn in btnOptions.btns" :key="btn.text" @click="dialogNext(btn.option)">{{
       btn.text
     }}</el-button>
@@ -167,7 +186,7 @@ useResizeObserver(el, (entries) => {
 .container {
   margin: 0 auto;
   width: 100%;
-  height: 80vh;
+  height: 70vh;
   position: relative;
 }
 .card {
